@@ -1,47 +1,52 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
-	<title>Sorted Bands</title>
+  <meta charset="UTF-8">
+  <title>Sorted Bands</title>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
-	 <h1>Band List</h1>
-	<ul>
-		<li>The Plot in You</li>
-        <li>The Devil Wears Prada</li>
-		 <li>Pierce the Veil</li>
-		 <li>Norma Jean</li>
-		 <li>The Bled</li>
-		 <li>Say Anything</li>
-		 <li>The Midway State</li>
-		 <li>We Came as Romans</li>
-		 <li>Counterparts</li>
-		<li>Oh, Sleeper</li>
-		<li>A Skylit Drive</li>
-		<li>Anywhere But Here</li>
-		<li>An Old Dog</li>
 
+  <h1>Band List</h1>
+  <ul id="band"></ul>
 
+  <script>
+    const bands = [
+      'The Plot in You',
+      'The Devil Wears Prada',
+      'Pierce the Veil',
+      'Norma Jean',
+      'The Bled',
+      'Say Anything',
+      'The Midway State',
+      'We Came as Romans',
+      'Counterparts',
+      'Oh, Sleeper',
+      'A Skylit Drive',
+      'Anywhere But Here',
+      'An Old Dog'
+    ];
 
+    // Function to strip leading articles
+    function stripArticle(name) {
+      return name.replace(/^(a |an |the )/i, '').trim();
+    }
 
+    // Sort bands ignoring leading articles
+    const sortedBands = bands.sort((a, b) => {
+      const bandA = stripArticle(a).toLowerCase();
+      const bandB = stripArticle(b).toLowerCase();
+      return bandA.localeCompare(bandB);
+    });
 
+    // Populate the list
+    const bandList = document.getElementById('band');
 
+    sortedBands.forEach(band => {
+      const li = document.createElement('li');
+      li.textContent = band;
+      bandList.appendChild(li);
+    });
+  </script>
 
-
-
-
-
-
-
-		
-	</ul>
-
-</body> 
-
+</body>
 </html>
